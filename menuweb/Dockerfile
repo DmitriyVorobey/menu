@@ -12,6 +12,9 @@ COPY package*.json ./
 # install npm packages
 RUN npm install
 
+# copy files
+COPY . .
+
 # build production build
 RUN npm run build
 
