@@ -1,21 +1,18 @@
 FROM node:lts-alpine
 
-# устанавливаем простой HTTP-сервер для статики
+# install simple http server
 RUN npm install -g http-server
 
-# делаем каталог 'app' текущим рабочим каталогом
+# make app directory as a working directory
 WORKDIR /app
 
-# копируем оба 'package.json' и 'package-lock.json' (если есть)
+# copy package json and package.lock.json
 COPY package*.json ./
 
-# устанавливаем зависимости проекта
+# install npm packages
 RUN npm install
 
-# копируем файлы и каталоги проекта в текущий рабочий каталог (т.е. в каталог 'app')
-COPY . .
-
-# собираем приложение для production с минификацией
+# build production build
 RUN npm run build
 
 EXPOSE 8080
