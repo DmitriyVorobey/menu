@@ -1,1 +1,4 @@
 /menuweb/node_modules/*
+/menuapi/.vs/
+/menuapi/bin/*
+/menuapi/obj/*
