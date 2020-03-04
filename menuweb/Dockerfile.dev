@@ -1,0 +1,19 @@
+FROM node:lts-alpine
+
+# make  'app' as a current directory
+WORKDIR /app
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# copy package.json and pacakge.json.lock
+COPY package*.json ./
+
+# install npm dependencies
+RUN npm install
+
+# install vue cli
+RUN npm install @vue/cli -g
+
+# start app
+CMD [ "npm", "run", "serve" ]
